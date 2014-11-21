@@ -14,13 +14,20 @@
         <ImageView
             android:id="@+id/imagen"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/texto_detalles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:text="dsadsa" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
     </LinearLayout>
 

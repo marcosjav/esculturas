@@ -17,6 +17,9 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -69,6 +72,7 @@ public class EsculturaDownlader extends AsyncTask<String, JSONObject, Escultura>
 		linLayout.addView(texto);
 		
 		
+		
 	}
 
 	@Override
@@ -109,6 +113,22 @@ public class EsculturaDownlader extends AsyncTask<String, JSONObject, Escultura>
 			jArr = (JSONArray)jsonObject.get("und");
 			jsonObject = (JSONObject)jArr.get(0);
 			escultura.setDescripcion(Html.fromHtml(jsonObject.getString("value")).toString());
+			
+			jsonObject = jsonAux;   // Obtenemos el JSON de la escultura de nuevo      DATOS DEL MAPA
+			jsonObject = (JSONObject) jsonObject.get("field_mapa");   // buscamos los datos del mapa
+			jArr = (JSONArray)jsonObject.get("und");
+			jsonObject = (JSONObject)jArr.get(0);
+			CameraPosition ubicacion =  new CameraPosition.Builder().target(new LatLng(jsonObject.getDouble("lat"), jsonObject.getDouble("lon")))
+                    .zoom(jsonObject.getLong("zoom"))
+                    .build();
+			escultura.setUbicacion(ubicacion);
+			
+			jsonObject = jsonAux;   // Obtenemos el JSON de la escultura de nuevo      DIRECCION
+			jsonObject = (JSONObject) jsonObject.get("field_ubicacion");   // buscamos los datos del mapa
+			jArr = (JSONArray)jsonObject.get("und");
+			jsonObject = (JSONObject)jArr.get(0);
+			escultura.setDireccion(jsonObject.getString("value"));
+			
 			
 		} catch (Exception e) {
 		}

@@ -1,11 +1,15 @@
 package marcosjav.escultureitors;
 
+import com.google.android.gms.maps.model.CameraPosition;
+
 import android.graphics.Bitmap;
 
 public class Escultura {
 	private String nombre, autor, descripcion, uri;
 	private int nid;
 	private Bitmap foto;
+	private static CameraPosition ubicacion;
+	private static String direccion;
 	
 	public Escultura(){
 		this.nombre = "Sin Nombre";
@@ -47,6 +51,18 @@ public class Escultura {
 	}
 	public void setUri(String uri) {
 		this.uri = uri;
+	}
+	public CameraPosition getUbicacion() {
+		return ubicacion;
+	}
+	public void setUbicacion(CameraPosition ubicacion) {
+		Escultura.ubicacion = ubicacion;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		Escultura.direccion = direccion;
 	}
 	
 }

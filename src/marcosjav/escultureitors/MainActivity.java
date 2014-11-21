@@ -1,47 +1,36 @@
 package marcosjav.escultureitors;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.support.v4.view.ViewPager.LayoutParams;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import android.support.v7.app.ActionBarActivity;
-import android.text.Html;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 //	public static int hilos;
+	static Dialog dialog;
 	ProgressDialog progressDialog;
 	TextView nombreAutor, nombreEscultura, descripcion;
 	static ImageView imagen;
@@ -50,7 +39,10 @@ public class MainActivity extends ActionBarActivity {
 	JSONObject jsonObject;
 	Escultura escultura = new Escultura();
 	int index, page;
-
+	Button btnMapa;
+	GoogleMap mMap;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +50,21 @@ public class MainActivity extends ActionBarActivity {
 
 		nombreAutor = (TextView) findViewById(R.id.nombre_autor);
 		nombreEscultura = (TextView) findViewById(R.id.nombre_escultura);
+		
+		dialog = new Dialog(this);
+		dialog.setContentView(R.layout.fragment_map);
+//		dialog.setTitle("Dialogo");
+//		Button volver = (Button)dialog.findViewById(R.id.btn_volver);  //porque como está en otro layout no puedo hacerlo buscar un método en MainActivity
+//		volver.setOnClickListener(new Button.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				dialog.dismiss();
+//			}
+//		});
+		
+		setUpMapIfNeeded();
 
 		getDatos();
 		getEscultura();
@@ -84,21 +91,23 @@ public class MainActivity extends ActionBarActivity {
 		case R.id.btnVer:
 			getEscultura();
 			break;
-		case R.id.btn_volver:
-			
-			break;
 		case R.id.btnMapa:
-//			LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-//		    View popupView = layoutInflater.inflate(R.layout.fragment_map, null);  
-//		    final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);  
-//		    popupWindow.showAsDropDown(findViewById(R.id.btn_volver), 50, -30);
+			dialog.setTitle("Ubicación");
+	        ((TextView)dialog.findViewById(R.id.txtDireccion)).setText(escultura.getDireccion());
+			dialog.show();
+			mMap.clear();
+			mMap.addMarker(new MarkerOptions()
+            .position(escultura.getUbicacion().target)
+            .title(nombreEscultura.getText().toString())
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+			mMap.moveCamera(CameraUpdateFactory.newCameraPosition(escultura.getUbicacion()));
 		}
 
 	}
 	
 	private void getEscultura(){
 		index++;
-		if(index<20)
+		if(index<20 && jsonArray.length() > 0)
 		{
 			LinearLayout layout = (LinearLayout)findViewById(R.id.layout_principal);
 			try {
@@ -124,61 +133,16 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	
-	
+	private void setUpMapIfNeeded() {
+        if (mMap == null) {
+        	try {
+        		mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                        .getMap();
 
-//	public void setImage(Bitmap imagen){
-//		this.imagen.setImageBitmap(imagen);
-//	}
-
-//	private void getDatos() {
-//		try {
-//			jsonObject = (JSONObject)jsonArray.get(index);
-//			escultura.setNid(jsonObject.getInt("nid"));
-//			
-//			escultura.setNombre(jsonObject.getString("title"));
-//			nombreEscultura.setText(escultura.getNombre());
-//			
-//			escultura.setUri(jsonObject.getString("uri"));			
-//			jsonObject = new JSONObjectDownloader().execute(escultura.getUri()).get();   // Obtenemos el JSON de la escultura
-//			
-//			jsonObject = (JSONObject) jsonObject.get("field_fotos");   // Buscamos el nombre de la foto y la descargamos   
-//			JSONArray jArr = (JSONArray)jsonObject.get("und");
-//			jsonObject = (JSONObject)jArr.get(0);
-//			String urlFoto = "http://dev.resistenciarte.org/sites/dev.resistenciarte.org/files/" +  jsonObject.getString("uri").substring(9);
-//			InputStream in = new URL(urlFoto).openStream();		// Bajamos la imagen
-//	    	foto = BitmapFactory.decodeStream(in);
-//			imagen.setImageBitmap(foto);
-//			
-//			
-//			jsonObject = new JSONObjectDownloader().execute(escultura.getUri()).get();   // Obtenemos el JSON de la escultura de nuevo
-//			
-//			jsonObject = (JSONObject) jsonObject.get("field_autor");   // buscamos los datos del autor
-//			jArr = (JSONArray)jsonObject.get("und");
-//			jsonObject = (JSONObject)jArr.get(0);
-//			String urlAutor = "http://dev.resistenciarte.org/api/v1/node/" +  jsonObject.getString("target_id");
-//			jsonObject = new JSONObjectDownloader().execute(urlAutor).get();
-//			escultura.setAutor(jsonObject.getString("title"));
-//			
-//			nombreAutor.setText(escultura.getAutor());
-//			
-//			jsonObject = new JSONObjectDownloader().execute(escultura.getUri()).get();   // Obtenemos el JSON de la escultura de nuevo
-//			
-//			jsonObject = (JSONObject) jsonObject.get("body");   // buscamos los datos del cuerpo
-//			jArr = (JSONArray)jsonObject.get("und");
-//			jsonObject = (JSONObject)jArr.get(0);
-//			escultura.setDescripcion(jsonObject.getString("value"));
-//			
-//			String desc = escultura.getDescripcion()==""?"Sin descripción":escultura.getDescripcion(); 
-//			descripcion.setText(Html.fromHtml(desc).toString());
-//			
-//			
-//		} catch (Exception e) {
-//		}
-//		
-//	}
-
-//	private void setNombreEscultura() {
-//
-//	}
-
+			} catch (Exception e) {
+				Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+			}
+            
+        }
+    }
 }
