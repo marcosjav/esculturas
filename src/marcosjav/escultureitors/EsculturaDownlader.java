@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,63 +15,55 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+@SuppressLint("NewApi")
 public class EsculturaDownlader extends AsyncTask<String, JSONObject, Escultura> {
-	LinearLayout layout, linLayout; 
+	LinearLayout layout, linLayout;
+	FrameLayout frame;
 	JSONObject jsonObject; JSONArray jsonArray;
-	
-	private Context context;
-	private ProgressBar progress;
+	Context context;
 
-	public EsculturaDownlader(Context context, LinearLayout layout, JSONObject jsonObject){
-		this.layout =  layout;
+	public EsculturaDownlader(Context context, FrameLayout frame, JSONObject jsonObject){
 		this.jsonObject = jsonObject;
+		this.frame = frame;
 		this.context = context;
-		progress = new ProgressBar(context);
-		linLayout = (LinearLayout)layout.findViewById(R.id.layout_secundario);
+		linLayout = (LinearLayout)frame.findViewById(R.id.layout_secundario);
 	}
 	
 	@Override
 	protected void onPreExecute() {
-		linLayout.removeAllViews();
-		linLayout.addView(progress, 0);
+		mostrarEscultura(false);
 	}
 
 	@Override
 	protected void onPostExecute(Escultura result) {
-		TextView nombre = (TextView)layout.findViewById(R.id.nombre_escultura);
-		TextView autor = (TextView)layout.findViewById(R.id.nombre_autor);
-		
+		TextView nombre = (TextView)linLayout.findViewById(R.id.title);
+		TextView autor = (TextView)linLayout.findViewById(R.id.autor);
+		TextView texto = (TextView)linLayout.findViewById(R.id.descripcion);
+		ImageView imagen = (ImageView)linLayout.findViewById(R.id.foto);
+
 		nombre.setText(result.getNombre());
 		autor.setText(result.getAutor());
-		
-		linLayout.removeViewAt(0);
-		ImageView imagen = new ImageView(context);
-		TextView texto = new TextView(context);
-		
 		imagen.setImageBitmap(result.getFoto());
 		texto.setText(result.getDescripcion());
 		
-		linLayout.addView(imagen);
-		linLayout.addView(texto);
-		
-		
-		
+		mostrarEscultura(true);
 	}
 
 	@Override
@@ -103,7 +94,6 @@ public class EsculturaDownlader extends AsyncTask<String, JSONObject, Escultura>
 			jArr = (JSONArray)jsonObject.get("und");
 			jsonObject = (JSONObject)jArr.get(0);
 			String urlAutor = "http://dev.resistenciarte.org/api/v1/node/" +  jsonObject.getString("target_id");
-//			jsonObject = new JSONObjectDownloader().execute(urlAutor).get();
 			jsonObject = new JSONObject(downloadHTML(urlAutor));
 			escultura.setAutor(jsonObject.getString("title"));
 			
@@ -176,6 +166,50 @@ public class EsculturaDownlader extends AsyncTask<String, JSONObject, Escultura>
 			Log.w("MyApp", "Download Exception : " + e.toString());
 		}
 		return "";
+	}
+	
+	private void mostrarEscultura(Boolean mostrar){
+		LinearLayout layoutEscultura = (LinearLayout)frame.findViewById(R.id.layout_escultura);
+		RelativeLayout layoutCargando = (RelativeLayout)frame.findViewById(R.id.layout_cargando);
+		
+		if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)
+		{
+			Animation animFadeIn, animFadeOut;
+			// load animations
+			animFadeIn = AnimationUtils.loadAnimation(context,
+			                R.animator.fade_in);
+			animFadeOut = AnimationUtils.loadAnimation(context,
+			                R.animator.fade_out);
+			if(mostrar)
+			{
+				// set animation listeners
+//				animFadeIn.setAnimationListener(this);
+//				animFadeOut.setAnimationListener(this);
+				 
+				// Make fade in elements Visible first
+				layoutEscultura.setVisibility(View.VISIBLE);
+				 
+				// start fade in animation
+				layoutEscultura.startAnimation(animFadeIn);
+				                 
+				// start fade out animation
+				layoutCargando.startAnimation(animFadeOut);
+			}else{
+				// Make fade in elements Visible first
+				layoutCargando.setVisibility(View.VISIBLE);
+				 
+				// start fade in animation
+				layoutCargando.startAnimation(animFadeIn);
+				                 
+				// start fade out animation
+				layoutEscultura.startAnimation(animFadeOut);
+			}
+		}
+		else{
+			layoutEscultura.setVisibility(mostrar ? View.VISIBLE : View.GONE);
+			layoutCargando.setVisibility(mostrar ? View.GONE : View.VISIBLE);
+		}
+
 	}
 
 }

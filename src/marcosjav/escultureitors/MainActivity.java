@@ -4,27 +4,22 @@ import java.util.concurrent.ExecutionException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.support.v7.app.ActionBarActivity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,22 +42,11 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		nombreAutor = (TextView) findViewById(R.id.nombre_autor);
-		nombreEscultura = (TextView) findViewById(R.id.nombre_escultura);
 		
-		dialog = new Dialog(this);
+		nombreEscultura = (TextView)findViewById(R.id.title);
+		
+		dialog = new Dialog(this,R.style.MapDialog);
 		dialog.setContentView(R.layout.fragment_map);
-//		dialog.setTitle("Dialogo");
-//		Button volver = (Button)dialog.findViewById(R.id.btn_volver);  //porque como está en otro layout no puedo hacerlo buscar un método en MainActivity
-//		volver.setOnClickListener(new Button.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				dialog.dismiss();
-//			}
-//		});
 		
 		setUpMapIfNeeded();
 
@@ -88,10 +72,10 @@ public class MainActivity extends ActionBarActivity {
 
 	public void click(View v) {
 		switch (v.getId()) {
-		case R.id.btnVer:
+		case R.id.siguiente_1:
 			getEscultura();
 			break;
-		case R.id.btnMapa:
+		case R.id.ver_mapa:
 			dialog.setTitle("Ubicación");
 	        ((TextView)dialog.findViewById(R.id.txtDireccion)).setText(escultura.getDireccion());
 			dialog.show();
@@ -109,10 +93,10 @@ public class MainActivity extends ActionBarActivity {
 		index++;
 		if(index<20 && jsonArray.length() > 0)
 		{
-			LinearLayout layout = (LinearLayout)findViewById(R.id.layout_principal);
+			FrameLayout frame = (FrameLayout)findViewById(R.id.layout_principal);
 			try {
 				jsonObject = (JSONObject)jsonArray.get(index);
-				new EsculturaDownlader(this, layout, jsonObject).execute();
+				new EsculturaDownlader(this, frame, jsonObject).execute();
 				
 			} catch (JSONException e) {
 				Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();

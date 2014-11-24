@@ -16,5 +16,11 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+	<style name="MapDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/MapDialogAnimation</item>
+    </style>
+	<style name="MapDialogAnimation">
+        <item name="android:windowEnterAnimation">@animator/fade_in</item>
+        <item name="android:windowExitAnimation">@animator/fade_out</item>
+    </style>
 </resources>
