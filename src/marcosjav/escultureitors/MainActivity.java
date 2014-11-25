@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,26 +55,19 @@ public class MainActivity extends ActionBarActivity {
 		getEscultura();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 	public void click(View v) {
 		switch (v.getId()) {
 		case R.id.siguiente_1:
 			getEscultura();
+			final ScrollView scroll = (ScrollView)findViewById(R.id.scrollView1);
+			scroll.post(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					scroll.fullScroll(ScrollView.FOCUS_UP);
+				}
+			});
 			break;
 		case R.id.ver_mapa:
 			dialog.setTitle("Ubicación");

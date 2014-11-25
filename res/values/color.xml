@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="descripcion">#888888</color>
+    <color name="verde">#1F711F</color>
+    <color name="title_high">#2C4237</color>
+    <color name="background">#202020</color>
+    <color name="title">#99D899</color>
+    <color name="rojo">#FF0000</color>
+   
+</resources>

@@ -3,14 +3,15 @@
     android:id="@+id/layout_principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/layout_escultura"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" 
-        android:visibility="gone">
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <ScrollView
             android:id="@+id/scrollView1"
@@ -29,29 +30,36 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:shadowColor="@color/title_high"
+                    android:shadowDx="-1"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_gravity="center_horizontal" />
+                    android:textColor="@color/title" />
 
                 <TextView
                     android:id="@+id/autor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:layout_gravity="center_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/white" />
 
                 <ImageView
                     android:id="@+id/foto"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/descripcion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
-
+                    android:text=""
+                    android:textColor="@color/descripcion" />
             </LinearLayout>
         </ScrollView>
 
@@ -64,8 +72,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ver_mapa" 
-                android:onClick="click"/>
+                android:onClick="click"
+                android:src="@drawable/ver_mapa"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/siguiente_1"
@@ -73,10 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="click"
-                android:src="@drawable/adelante" />
-
+                android:src="@drawable/adelante"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
-
     </LinearLayout>
 
     <RelativeLayout
@@ -99,8 +107,8 @@
             android:layout_above="@+id/progressBar1"
             android:layout_centerHorizontal="true"
             android:text="@string/txt_Cargando"
+            android:textColor="@color/descripcion"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
     </RelativeLayout>
 
 </FrameLayout>

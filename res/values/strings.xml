@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Escultureitors</string>
+    <string name="app_name">ResistenciArteII</string>
     <string name="btn_Ver">Ver siguiente</string>
     <string name="btn_Mapa">Mapa</string>
     <string name="txt_Cargando">Cargando&#8230;</string>
