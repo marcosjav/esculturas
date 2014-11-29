@@ -1,6 +1,8 @@
 package marcosjav.escultureitors;
 
 import java.util.concurrent.ExecutionException;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,23 +11,30 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import android.support.v4.view.ViewPager.LayoutParams;
 import android.support.v7.app.ActionBarActivity;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity {
-//	public static int hilos;
 	static Dialog dialog;
 	ProgressDialog progressDialog;
 	TextView nombreAutor, nombreEscultura, descripcion;
@@ -44,6 +53,8 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		showPopup();
+		
 		nombreEscultura = (TextView)findViewById(R.id.title);
 		
 		dialog = new Dialog(this,R.style.MapDialog);
@@ -51,8 +62,11 @@ public class MainActivity extends ActionBarActivity {
 		
 		setUpMapIfNeeded();
 
+		
 		getDatos();
 		getEscultura();
+		
+		
 	}
 
 	public void click(View v) {
@@ -123,4 +137,27 @@ public class MainActivity extends ActionBarActivity {
             
         }
     }
+	
+	public void showPopup(){
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    final View popupView = layoutInflater.inflate(R.layout.fragment_inicio, null); 
+	    final FrameLayout fr = (FrameLayout)findViewById(R.id.layout_principal);
+	    fr.setAnimation(AnimationUtils.loadAnimation(this, R.animator.window_in));
+		fr.addView(popupView);
+		
+	    Button btnDismiss = (Button)popupView.findViewById(R.id.btn_back);
+	    btnDismiss.setOnClickListener(new Button.OnClickListener(){
+					     @Override
+					     public void onClick(View v) {
+					    	 fr.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.animator.window_out));
+					    	 fr.removeView(popupView);
+					    	 fr.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+					     }});
+	   
+	   
+	}
+	
+	
+	
+	
 }

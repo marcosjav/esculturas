@@ -7,5 +7,6 @@
     <string name="txt_Cargando">Cargando&#8230;</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="btn_ingresar">Ingresar</string>
 
 </resources>

@@ -2,32 +2,43 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/background" 
+    android:id="@+id/pantalla_inicio">
 
     <LinearLayout
         android:id="@+id/layout_detalles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/app_name"
+			android:gravity="center_horizontal"
+			android:textSize="30sp"
+            android:textColor="@color/rojo"/>
         <ImageView
             android:id="@+id/imagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="top"
+            android:src="@drawable/resistecia" />
 
         <TextView
             android:id="@+id/texto_detalles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dsadsa" />
+            android:layout_width="280sp"
+            android:layout_height="100sp"
+            android:textColor="@color/common_signin_btn_text_light"
+            android:text="Bienvenidos a esta simple aplicación en la que podrán apreciar las diferentes obras de arte de la ciudad de las esculturas" />
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn_ingresar" />
 
     </LinearLayout>
 

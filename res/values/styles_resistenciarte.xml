@@ -20,6 +20,8 @@
 <resources>
 
     <style name="Theme.Resistenciarte" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
         <item name="actionBarItemBackground">@drawable/selectable_background_resistenciarte</item>
         <item name="popupMenuStyle">@style/PopupMenu.Resistenciarte</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Resistenciarte</item>
