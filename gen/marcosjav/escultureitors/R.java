@@ -20,8 +20,6 @@ public final class R {
         public static final int blink=0x7f050000;
         public static final int fade_in=0x7f050001;
         public static final int fade_out=0x7f050002;
-        public static final int window_in=0x7f050003;
-        public static final int window_out=0x7f050004;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1236,57 +1234,59 @@ containing a value of this type.
         public static final int btn_cab_done_resistenciarte=0x7f020062;
         public static final int cab_background_bottom_resistenciarte=0x7f020063;
         public static final int cab_background_top_resistenciarte=0x7f020064;
-        public static final int common_signin_btn_icon_dark=0x7f020065;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f020066;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020067;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020068;
-        public static final int common_signin_btn_icon_disabled_light=0x7f020069;
-        public static final int common_signin_btn_icon_focus_dark=0x7f02006a;
-        public static final int common_signin_btn_icon_focus_light=0x7f02006b;
-        public static final int common_signin_btn_icon_light=0x7f02006c;
-        public static final int common_signin_btn_icon_normal_dark=0x7f02006d;
-        public static final int common_signin_btn_icon_normal_light=0x7f02006e;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f02006f;
-        public static final int common_signin_btn_icon_pressed_light=0x7f020070;
-        public static final int common_signin_btn_text_dark=0x7f020071;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020072;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020073;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f020074;
-        public static final int common_signin_btn_text_disabled_light=0x7f020075;
-        public static final int common_signin_btn_text_focus_dark=0x7f020076;
-        public static final int common_signin_btn_text_focus_light=0x7f020077;
-        public static final int common_signin_btn_text_light=0x7f020078;
-        public static final int common_signin_btn_text_normal_dark=0x7f020079;
-        public static final int common_signin_btn_text_normal_light=0x7f02007a;
-        public static final int common_signin_btn_text_pressed_dark=0x7f02007b;
-        public static final int common_signin_btn_text_pressed_light=0x7f02007c;
-        public static final int ic_launcher=0x7f02007d;
-        public static final int ic_plusone_medium_off_client=0x7f02007e;
-        public static final int ic_plusone_small_off_client=0x7f02007f;
-        public static final int ic_plusone_standard_off_client=0x7f020080;
-        public static final int ic_plusone_tall_off_client=0x7f020081;
-        public static final int list_focused_resistenciarte=0x7f020082;
-        public static final int list_pressed_resistenciarte=0x7f020083;
-        public static final int menu_dropdown_panel_resistenciarte=0x7f020084;
-        public static final int progress_bg_resistenciarte=0x7f020085;
-        public static final int progress_horizontal_resistenciarte=0x7f020086;
-        public static final int progress_primary_resistenciarte=0x7f020087;
-        public static final int progress_secondary_resistenciarte=0x7f020088;
-        public static final int resistecia=0x7f020089;
-        public static final int selectable_background_resistenciarte=0x7f02008a;
-        public static final int spinner_ab_default_resistenciarte=0x7f02008b;
-        public static final int spinner_ab_disabled_resistenciarte=0x7f02008c;
-        public static final int spinner_ab_focused_resistenciarte=0x7f02008d;
-        public static final int spinner_ab_pressed_resistenciarte=0x7f02008e;
-        public static final int spinner_background_ab_resistenciarte=0x7f02008f;
-        public static final int tab_indicator_ab_resistenciarte=0x7f020090;
-        public static final int tab_selected_focused_resistenciarte=0x7f020091;
-        public static final int tab_selected_pressed_resistenciarte=0x7f020092;
-        public static final int tab_selected_resistenciarte=0x7f020093;
-        public static final int tab_unselected_focused_resistenciarte=0x7f020094;
-        public static final int tab_unselected_pressed_resistenciarte=0x7f020095;
-        public static final int tab_unselected_resistenciarte=0x7f020096;
-        public static final int ver_mapa=0x7f020097;
+        public static final int chaco=0x7f020065;
+        public static final int common_signin_btn_icon_dark=0x7f020066;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f020067;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020068;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020069;
+        public static final int common_signin_btn_icon_disabled_light=0x7f02006a;
+        public static final int common_signin_btn_icon_focus_dark=0x7f02006b;
+        public static final int common_signin_btn_icon_focus_light=0x7f02006c;
+        public static final int common_signin_btn_icon_light=0x7f02006d;
+        public static final int common_signin_btn_icon_normal_dark=0x7f02006e;
+        public static final int common_signin_btn_icon_normal_light=0x7f02006f;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f020070;
+        public static final int common_signin_btn_icon_pressed_light=0x7f020071;
+        public static final int common_signin_btn_text_dark=0x7f020072;
+        public static final int common_signin_btn_text_disabled_dark=0x7f020073;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020074;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f020075;
+        public static final int common_signin_btn_text_disabled_light=0x7f020076;
+        public static final int common_signin_btn_text_focus_dark=0x7f020077;
+        public static final int common_signin_btn_text_focus_light=0x7f020078;
+        public static final int common_signin_btn_text_light=0x7f020079;
+        public static final int common_signin_btn_text_normal_dark=0x7f02007a;
+        public static final int common_signin_btn_text_normal_light=0x7f02007b;
+        public static final int common_signin_btn_text_pressed_dark=0x7f02007c;
+        public static final int common_signin_btn_text_pressed_light=0x7f02007d;
+        public static final int escarapela=0x7f02007e;
+        public static final int ic_launcher=0x7f02007f;
+        public static final int ic_plusone_medium_off_client=0x7f020080;
+        public static final int ic_plusone_small_off_client=0x7f020081;
+        public static final int ic_plusone_standard_off_client=0x7f020082;
+        public static final int ic_plusone_tall_off_client=0x7f020083;
+        public static final int list_focused_resistenciarte=0x7f020084;
+        public static final int list_pressed_resistenciarte=0x7f020085;
+        public static final int menu_dropdown_panel_resistenciarte=0x7f020086;
+        public static final int progress_bg_resistenciarte=0x7f020087;
+        public static final int progress_horizontal_resistenciarte=0x7f020088;
+        public static final int progress_primary_resistenciarte=0x7f020089;
+        public static final int progress_secondary_resistenciarte=0x7f02008a;
+        public static final int resistecia=0x7f02008b;
+        public static final int selectable_background_resistenciarte=0x7f02008c;
+        public static final int spinner_ab_default_resistenciarte=0x7f02008d;
+        public static final int spinner_ab_disabled_resistenciarte=0x7f02008e;
+        public static final int spinner_ab_focused_resistenciarte=0x7f02008f;
+        public static final int spinner_ab_pressed_resistenciarte=0x7f020090;
+        public static final int spinner_background_ab_resistenciarte=0x7f020091;
+        public static final int tab_indicator_ab_resistenciarte=0x7f020092;
+        public static final int tab_selected_focused_resistenciarte=0x7f020093;
+        public static final int tab_selected_pressed_resistenciarte=0x7f020094;
+        public static final int tab_selected_resistenciarte=0x7f020095;
+        public static final int tab_unselected_focused_resistenciarte=0x7f020096;
+        public static final int tab_unselected_pressed_resistenciarte=0x7f020097;
+        public static final int tab_unselected_resistenciarte=0x7f020098;
+        public static final int ver_mapa=0x7f020099;
     }
     public static final class id {
         public static final int action_bar=0x7f07001f;
@@ -1300,50 +1300,54 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070019;
         public static final int action_menu_presenter=0x7f07001a;
         public static final int action_mode_close_button=0x7f070027;
-        public static final int action_settings=0x7f070052;
+        public static final int action_settings=0x7f070057;
         public static final int activity_chooser_view_content=0x7f070028;
         public static final int always=0x7f07000f;
-        public static final int autor=0x7f070043;
+        public static final int autor=0x7f070044;
+        public static final int back=0x7f07004f;
         public static final int beginning=0x7f070014;
-        public static final int btn_back=0x7f07004f;
+        public static final int btn_back=0x7f070054;
         public static final int checkbox=0x7f070030;
         public static final int collapseActionView=0x7f070011;
         public static final int default_activity_button=0x7f07002b;
-        public static final int descripcion=0x7f070045;
+        public static final int descripcion=0x7f070046;
         public static final int dialog=0x7f070012;
         public static final int disableHome=0x7f07000c;
         public static final int dropdown=0x7f070013;
         public static final int edit_query=0x7f070033;
         public static final int end=0x7f070016;
+        public static final int escarapela=0x7f070040;
         public static final int expand_activities_button=0x7f070029;
         public static final int expanded_menu=0x7f07002f;
-        public static final int foto=0x7f070044;
+        public static final int foto=0x7f070045;
         public static final int home=0x7f070017;
         public static final int homeAsUp=0x7f070009;
         public static final int hybrid=0x7f070004;
         public static final int icon=0x7f07002d;
         public static final int ifRoom=0x7f07000e;
         public static final int image=0x7f07002a;
-        public static final int imagen=0x7f07004d;
-        public static final int layout_cargando=0x7f070048;
-        public static final int layout_detalles=0x7f07004c;
-        public static final int layout_escultura=0x7f070040;
+        public static final int imagen=0x7f070052;
+        public static final int layout_cargando=0x7f070049;
+        public static final int layout_detalles=0x7f070051;
+        public static final int layout_escultura=0x7f070041;
+        public static final int layout_mapa=0x7f07004c;
         public static final int layout_principal=0x7f07003f;
-        public static final int layout_secundario=0x7f070042;
+        public static final int layout_secundario=0x7f070043;
         public static final int listMode=0x7f070005;
         public static final int list_item=0x7f07002c;
-        public static final int map=0x7f070051;
+        public static final int map=0x7f07004e;
+        public static final int map2=0x7f070056;
         public static final int middle=0x7f070015;
         public static final int never=0x7f07000d;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
-        public static final int pantalla_inicio=0x7f07004b;
-        public static final int progressBar1=0x7f070049;
+        public static final int pantalla_inicio=0x7f070050;
+        public static final int progressBar1=0x7f07004a;
         public static final int progress_circular=0x7f07001b;
         public static final int progress_horizontal=0x7f07001c;
         public static final int radio=0x7f070032;
         public static final int satellite=0x7f070002;
-        public static final int scrollView1=0x7f070041;
+        public static final int scrollView1=0x7f070042;
         public static final int search_badge=0x7f070035;
         public static final int search_bar=0x7f070034;
         public static final int search_button=0x7f070036;
@@ -1358,19 +1362,20 @@ containing a value of this type.
         public static final int showCustom=0x7f07000b;
         public static final int showHome=0x7f070008;
         public static final int showTitle=0x7f07000a;
-        public static final int siguiente_1=0x7f070047;
+        public static final int siguiente_1=0x7f070048;
         public static final int split_action_bar=0x7f070021;
         public static final int submit_area=0x7f07003c;
         public static final int tabMode=0x7f070006;
         public static final int terrain=0x7f070003;
-        public static final int textView1=0x7f07004a;
-        public static final int texto_detalles=0x7f07004e;
+        public static final int textView1=0x7f07004b;
+        public static final int texto_detalles=0x7f070053;
         public static final int title=0x7f07002e;
         public static final int top_action_bar=0x7f070023;
-        public static final int txtDireccion=0x7f070050;
+        public static final int txtDireccion=0x7f07004d;
+        public static final int txtDireccion2=0x7f070055;
         public static final int up=0x7f070024;
         public static final int useLogo=0x7f070007;
-        public static final int ver_mapa=0x7f070046;
+        public static final int ver_mapa=0x7f070047;
         public static final int withText=0x7f070010;
     }
     public static final class integer {
@@ -1571,10 +1576,10 @@ containing a value of this type.
         public static final int txt_Cargando=0x7f080029;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Resistenciarte=0x7f0c0093;
-        public static final int ActionBar_Transparent_Resistenciarte=0x7f0c0094;
-        public static final int ActionBarTabStyle_Resistenciarte=0x7f0c0097;
-        public static final int ActionButton_CloseMode_Resistenciarte=0x7f0c009a;
+        public static final int ActionBar_Solid_Resistenciarte=0x7f0c0094;
+        public static final int ActionBar_Transparent_Resistenciarte=0x7f0c0095;
+        public static final int ActionBarTabStyle_Resistenciarte=0x7f0c0098;
+        public static final int ActionButton_CloseMode_Resistenciarte=0x7f0c009b;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -1600,16 +1605,16 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0c008d;
-        public static final int DialogAnimation=0x7f0c0091;
-        public static final int DialogStyle=0x7f0c0090;
-        public static final int DropDownListView_Resistenciarte=0x7f0c0096;
-        public static final int DropDownNav_Resistenciarte=0x7f0c0098;
-        public static final int MapDialog=0x7f0c008e;
-        public static final int MapDialogAnimation=0x7f0c008f;
-        public static final int PopupMenu_Resistenciarte=0x7f0c0095;
+        public static final int AppTheme=0x7f0c008e;
+        public static final int DialogAnimation=0x7f0c0092;
+        public static final int DialogStyle=0x7f0c0091;
+        public static final int DropDownListView_Resistenciarte=0x7f0c0097;
+        public static final int DropDownNav_Resistenciarte=0x7f0c0099;
+        public static final int MapDialog=0x7f0c008f;
+        public static final int MapDialogAnimation=0x7f0c0090;
+        public static final int PopupMenu_Resistenciarte=0x7f0c0096;
         public static final int PopupWindowAnimation=0x7f0c008b;
-        public static final int ProgressBar_Resistenciarte=0x7f0c0099;
+        public static final int ProgressBar_Resistenciarte=0x7f0c009a;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0c0063;
@@ -1687,6 +1692,7 @@ containing a value of this type.
          */
         public static final int Theme_AppCompat_Light_DarkActionBar=0x7f0c0079;
         public static final int Theme_AppCompat_Light_DialogWhenLarge=0x7f0c007b;
+        public static final int Theme_AppCompat_Light_NoActionBar_FullScreen=0x7f0c008d;
         /**  Base platform-dependent theme  
          */
         public static final int Theme_Base=0x7f0c007e;
@@ -1718,11 +1724,21 @@ containing a value of this type.
         /**  Base platform-dependent theme providing a light-themed activity. 
          */
         public static final int Theme_Base_Light=0x7f0c007f;
-        public static final int Theme_Resistenciarte=0x7f0c0092;
+        /**      <style name="Theme.Resistenciarte" parent="@style/Theme.AppCompat.Light.DarkActionBar"> 
+         <item name="actionBarTabStyle">@style/ActionBarTabStyle.Resistenciarte</item> 
+         <item name="actionDropDownStyle">@style/DropDownNav.Resistenciarte</item> 
+         <item name="actionBarStyle">@style/ActionBar.Solid.Resistenciarte</item> 
+         <item name="actionModeBackground">@drawable/cab_background_top_resistenciarte</item> 
+         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_resistenciarte</item> 
+         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Resistenciarte</item> 
+                 Light.DarkActionBar specific 
+         <item name="actionBarWidgetTheme">@style/Theme.Resistenciarte.Widget</item> 
+         */
+        public static final int Theme_Resistenciarte=0x7f0c0093;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Resistenciarte_Widget=0x7f0c009b;
+        public static final int Theme_Resistenciarte_Widget=0x7f0c009c;
         /**  Styles in here can be extended for customisation in your application. Each utilises
          one of the Base styles. If Holo themes are available on the current platform version
          they will be used instead of the compat styles. 

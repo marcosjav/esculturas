@@ -6,17 +6,26 @@
     android:background="@color/background"
     android:orientation="vertical" >
 
+    <ImageView
+        android:id="@+id/escarapela"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="-50dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/escarapela" />
+
     <LinearLayout
         android:id="@+id/layout_escultura"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone" >
+        android:orientation="vertical" >
+
+        <!-- android:visibility="gone" -->
 
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="420dp" >
+            android:layout_height="460dp" >
 
             <LinearLayout
                 android:id="@+id/layout_secundario"
@@ -42,7 +51,7 @@
                 <TextView
                     android:id="@+id/autor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20sp"
                     android:layout_gravity="center_horizontal"
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -65,12 +74,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
             <ImageView
                 android:id="@+id/ver_mapa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="click"
                 android:src="@drawable/ver_mapa"
@@ -78,21 +88,21 @@
 
             <ImageView
                 android:id="@+id/siguiente_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="click"
                 android:src="@drawable/adelante"
                 tools:ignore="ContentDescription" />
-            
         </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/layout_cargando"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background" >
+        android:layout_height="match_parent" >
+
+        <!-- android:background="@color/background" -->
 
         <ProgressBar
             android:id="@+id/progressBar1"
@@ -109,8 +119,38 @@
             android:layout_above="@+id/progressBar1"
             android:layout_centerHorizontal="true"
             android:text="@string/txt_Cargando"
-            android:textColor="@color/descripcion"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/descripcion" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_mapa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/txtDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:textColor="@color/verde"/>
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+        <Button 
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="click"/>
+    </LinearLayout>
 
 </FrameLayout>

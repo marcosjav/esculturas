@@ -19,21 +19,25 @@
 
 <resources>
 
-    <style name="Theme.Resistenciarte" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+<!--     <style name="Theme.Resistenciarte" parent="@style/Theme.AppCompat.Light.DarkActionBar"> -->
+		<style name="Theme.Resistenciarte" parent="@style/Theme.AppCompat.Light">
         <item name="android:windowBackground">@color/background</item>
         <item name="android:colorBackground">@color/background</item>
         <item name="actionBarItemBackground">@drawable/selectable_background_resistenciarte</item>
         <item name="popupMenuStyle">@style/PopupMenu.Resistenciarte</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Resistenciarte</item>
-        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Resistenciarte</item>
-        <item name="actionDropDownStyle">@style/DropDownNav.Resistenciarte</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Resistenciarte</item>
-        <item name="actionModeBackground">@drawable/cab_background_top_resistenciarte</item>
-        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_resistenciarte</item>
-        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Resistenciarte</item>
+<!--         <item name="android:windowActionBar">false</item> -->
+    	<item name="android:windowNoTitle">true</item>
+        
+<!--         <item name="actionBarTabStyle">@style/ActionBarTabStyle.Resistenciarte</item> -->
+<!--         <item name="actionDropDownStyle">@style/DropDownNav.Resistenciarte</item> -->
+<!--         <item name="actionBarStyle">@style/ActionBar.Solid.Resistenciarte</item> -->
+<!--         <item name="actionModeBackground">@drawable/cab_background_top_resistenciarte</item> -->
+<!--         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_resistenciarte</item> -->
+<!--         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Resistenciarte</item> -->
 
-                <!-- Light.DarkActionBar specific -->
-        <item name="actionBarWidgetTheme">@style/Theme.Resistenciarte.Widget</item>
+<!--                 Light.DarkActionBar specific -->
+<!--         <item name="actionBarWidgetTheme">@style/Theme.Resistenciarte.Widget</item> -->
 
     </style>
 
